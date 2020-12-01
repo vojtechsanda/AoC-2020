@@ -1,15 +1,8 @@
-/**
- * PART 1 TEXT
- * 
- * --- Part Two ---
- * PART 2 TEXT
- */
-
 const fs = require('file-system');
 const path = require('path')
 
-const rawdata = fs.readFileSync(path.resolve(__dirname, 'input.json'));
-const input = JSON.parse(rawdata);
+const rawData = fs.readFileSync(path.resolve(__dirname, 'input.txt'));
+const rows = rawData.toString().split('\r').join('').split('\n');
 
 /*------------*/
 /*-- Part 1 --*/
