@@ -1,7 +1,10 @@
 const fs = require('file-system');
 const path = require('path')
 
-const rawData = fs.readFileSync(path.resolve(__dirname, 'input.txt'));
+const exampleData = false;
+
+const dataPath = path.resolve(__dirname, `input${exampleData ? `-${exampleData}` : ''}.txt`);
+const rawData = fs.readFileSync(dataPath);
 const rows = rawData.toString().split('\r').join('').split('\n');
 
 /*------------*/
