@@ -3,7 +3,7 @@ const path = require('path')
 
 const exampleData = false;
 
-const dataPath = path.resolve(__dirname, `input${exampleData ? `-${exampleData}` : ''}.txt`);
+const dataPath = path.resolve(__dirname, `input${exampleData ? '-example' : ''}.txt`);
 const rawData = fs.readFileSync(dataPath);
 const rows = rawData.toString().split('\r').join('').split('\n');
 
