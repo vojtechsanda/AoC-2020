@@ -7,16 +7,23 @@ const dataPath = path.resolve(__dirname, `input${exampleData ? '-example' : ''}.
 const rawData = fs.readFileSync(dataPath);
 const rows = rawData.toString().split('\r').join('').split('\n');
 
+
+/*----------------------*/
+/*-- Input formatting --*/
+/*----------------------*/
+// FORMATTING CODE HERE
+
 /*------------*/
 /*-- Part 1 --*/
 /*------------*/
-// PART 1 CODE
+// PART 1 CODE HERE
 
 console.log(`Part 1: ${'PART_1_VAR'}`); // Should be: PART 1 Solution
+
 
 /*------------*/
 /*-- Part 2 --*/
 /*------------*/
-// PART 2 CODE
+// PART 2 CODE HERE
 
 console.log(`Part 1: ${'PART_1_VAR'}`); // Should be: PART 2 Solution
