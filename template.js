@@ -5,13 +5,13 @@ const exampleData = false;
 
 const dataPath = path.resolve(__dirname, `input${exampleData ? '-example' : ''}.txt`);
 const rawData = fs.readFileSync(dataPath);
-const rows = rawData.toString().split('\r').join('').split('\n');
 
 
 /*----------------------*/
 /*-- Input formatting --*/
 /*----------------------*/
-// FORMATTING CODE HERE
+const rows = rawData.toString().split('\r\n');
+
 
 /*------------*/
 /*-- Part 1 --*/
