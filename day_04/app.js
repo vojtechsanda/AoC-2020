@@ -39,7 +39,7 @@ const passports = passportStrings.map(passportString => {
     })
 
     return passportObj;
-})
+});
 
 /*------------*/
 /*-- Part 1 --*/
@@ -100,7 +100,7 @@ const solvePart2 = (input, consoleOutput = true) => {
         const invalidItems = Object.keys(passport).filter(item => !validators[item](passport[item]));
 
         return invalidItems.length === 0;
-    })
+    });
 
     if (consoleOutput) {
         console.log(`The answer to the part 2 is => ${fullyValidPassports.length}`); // Should be: 101
