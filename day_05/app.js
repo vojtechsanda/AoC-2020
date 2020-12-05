@@ -67,7 +67,7 @@ const solvePart1 = (input, consoleOutput = true) => {
         console.log(`The answer to the part 1 is => ${maxId}`); // Should be: 838
     }
 
-    return [maxId];
+    return [maxId, seatIds];
 }
 solvePart1(rows);
 
@@ -76,51 +76,29 @@ solvePart1(rows);
 /*-- Part 2 --*/
 /*------------*/
 const solvePart2 = (input, consoleOutput = true) => {
-    const seats = input.map(inp => {
-        const directions = inp.split('');
-        
-        return getSeat(directions);
-    })
+    let mySeatId;
+    const [maxSeatId, seatIds] = solvePart1(input, false);
+    const minSeatId = Math.min(...seatIds);
+    
+    seatIds.sort((a, b) => a - b);
 
-    let emptySeats = [];
+    for (let wantedSeatId = minSeatId; wantedSeatId <= maxSeatId; wantedSeatId++) {
+        const index = wantedSeatId - minSeatId;
+      
+        if (seatIds[index] !== wantedSeatId) {
+            seatIds.splice(index, 0, null);
 
-    for (let row = 0; row < 128; row++) {
-        for (let column = 0; column < 8; column++) {
-            const seat = seats.find(seat => seat[0] === row && seat[1] === column);
-            
-            if (!seat) {
-                emptySeats.push([row, column]);
+            if (seatIds[index - 1] === wantedSeatId - 1 && seatIds[index + 1] === wantedSeatId + 1) {
+                mySeatId = wantedSeatId;
+                break;
             }
         }
-    }
-
-    const mySeat = emptySeats.find(seat => {
-        const nearbySeats = [];
-        nearbySeats.push([seat[0] + 1, seat[1]]);
-        nearbySeats.push([seat[0] - 1, seat[1]]);
-        nearbySeats.push([seat[0], seat[1] + 1]);
-        nearbySeats.push([seat[0], seat[1] - 1]);
-
-        const isNearbySeatEmpty = nearbySeats.find(nearbySeat => {
-            const isSeatEmpty = seats.find(seat => seat[0] === nearbySeat[0] && seat[1] === nearbySeat[1]) ? false : true;
-
-            return isSeatEmpty;
-        }) ? true : false;
-
-        return !isNearbySeatEmpty;
-    });
-
-    if (!mySeat) {
-        console.log('All we had to do, was board the right plane, User!');
-        return null;
-    }
-
-    const mySeatId = mySeat[0] * 8 + mySeat[1];
+    };
 
     if (consoleOutput) {
         console.log(`The answer to the part 2 is => ${mySeatId}`); // Should be: 714
     }
 
-    return [mySeatId];
+    // return [mySeatId];
 }
 solvePart2(rows);
