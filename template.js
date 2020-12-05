@@ -16,16 +16,28 @@ const rows = rawData.toString().split('\r\n');
 /*------------*/
 /*-- Part 1 --*/
 /*------------*/
-(() => {
+const solvePart1 = (input, consoleOutput = true) => {
     // PART 1 CODE HERE
-    console.log(`Part 1: ${'PART_1_VAR'}`); // Should be: PART 1 Solution
-})()
+
+    if (consoleOutput) {
+        console.log(`The answer to the part 1 is => ${'PART_1_SOLUTION'}`); // Should be: PART_1_SOLUTION
+    }
+
+    return ['PART_1_SOLUTION'];
+}
+solvePart1('INPUT');
 
 
 /*------------*/
 /*-- Part 2 --*/
 /*------------*/
-(() => {
+const solvePart2 = (input, consoleOutput = true) => {
     // PART 2 CODE HERE
-    console.log(`Part 2: ${'PART_2_VAR'}`); // Should be: PART 2 Solution
-})()
+
+    if (consoleOutput) {
+        console.log(`The answer to the part 2 is => ${'PART_2_SOLUTION'}`); // Should be: PART_2_SOLUTION
+    }
+
+    return ['PART_2_SOLUTION'];
+}
+solvePart2('INPUT');
