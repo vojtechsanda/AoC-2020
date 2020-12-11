@@ -20,7 +20,7 @@ const solvePart1 = (input, consoleOutput = true) => {
     // PART 1 CODE HERE
 
     if (consoleOutput) {
-        console.log(`The answer to the part 1 is => ${'PART_1_SOLUTION'}`); // Should be: PART_1_SOLUTION
+        console.log(`The answer to the part 1 is => ${'PART_1_SOLUTION'}`); // Example: EXAMPLE_PART_1_SOLUTION, Normal: PART_1_SOLUTION
     }
 
     return ['PART_1_SOLUTION'];
@@ -35,7 +35,7 @@ const solvePart2 = (input, consoleOutput = true) => {
     // PART 2 CODE HERE
 
     if (consoleOutput) {
-        console.log(`The answer to the part 2 is => ${'PART_2_SOLUTION'}`); // Should be: PART_2_SOLUTION
+        console.log(`The answer to the part 2 is => ${'PART_2_SOLUTION'}`); // Example: EXAMPLE_PART_2_SOLUTION, Normal: PART_2_SOLUTION
     }
 
     return ['PART_2_SOLUTION'];
