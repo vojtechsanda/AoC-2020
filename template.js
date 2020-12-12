@@ -41,3 +41,8 @@ const solvePart2 = (input, consoleOutput = true) => {
     return ['PART_2_SOLUTION'];
 }
 solvePart2('INPUT');
+
+
+/*---------------*/
+/*-- Utilities --*/
+/*---------------*/
