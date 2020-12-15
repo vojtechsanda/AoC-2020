@@ -67,6 +67,7 @@ solvePart1(blocks1);
 /*------------*/
 const solvePart2 = (input, consoleOutput = true) => {
     let memory = [];
+    let totalSum = 0;
 
     input.forEach((block, i) => {
         const safeInput = JSON.parse(JSON.stringify(block));
@@ -109,19 +110,24 @@ const solvePart2 = (input, consoleOutput = true) => {
             })
 
             addresses.forEach(address => {
-                memory[Number(address)] = mem[1];
+                address = Number(address);
+                mem[1] = Number(mem[1]);
+                
+                if (memory[address]) {
+                    totalSum -= memory[address];
+                }
+
+                totalSum += Number(mem[1]);
+                memory[address] = mem[1];
             })
         })
     })
 
-    const filteredMemory = memory.filter(mem => mem);
-    const finalNum = filteredMemory.reduce((acc, val) => acc += Number(val), 0);
-
     if (consoleOutput) {
-        console.log(`The answer to the part 2 is => ${finalNum}`); // Example: 208, Normal: PART_2_SOLUTION
+        console.log(`The answer to the part 2 is => ${totalSum}`); // Example: 208, Normal: 3348493585827
     }
 
-    return [finalNum];
+    return [totalSum];
 }
 solvePart2(blocks2);
 
