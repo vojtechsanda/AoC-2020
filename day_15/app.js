@@ -1,7 +1,7 @@
 const fs = require('file-system');
 const path = require('path')
 
-const exampleData = true;
+const exampleData = false;
 
 const dataPath = path.resolve(__dirname, `input${exampleData ? '-example' : ''}.txt`);
 const rawData = fs.readFileSync(dataPath);
@@ -46,9 +46,8 @@ solvePart1(inputNums);
 /*------------*/
 const solvePart2 = (input, consoleOutput = true) => {
     let storage = input.map((row, i) => [row, i]);
-    let fixNum = 0;
-    for (let i = storage.length; i < 2020; i++) {
-        const lastNum = storage[i-1-fixNum];
+    for (let i = storage.length; i < 30000000; i++) {
+        const lastNum = storage[storage.length-1];
         const restStorage = storage.slice(0, -1);
         restStorage.reverse();
 
@@ -56,24 +55,26 @@ const solvePart2 = (input, consoleOutput = true) => {
             return item[0] === lastNum[0];
         });
         
-        // if (prevLastNumIndex) {
-        //     const evenResterStorage = storage.slice(0, prevLastNumIndex[1]);
-        //     evenResterStorage.reverse();
+        if (prevLastNumIndex) {
+            const evenResterStorage = storage.slice(0, prevLastNumIndex[1]);
 
-        //     const evenPrevLastNumIndex = evenResterStorage.find(item => {
-        //         return item[0] === lastNum[0];
-        //     });
+            const evenPrevLastNumIndex = evenResterStorage.findIndex(item => {
+                return item[0] === lastNum[0];
+            });
 
-        //     if (evenPrevLastNumIndex) {
-        //         storage.splice(evenPrevLastNumIndex[1], 1);
-        //         fixNum++;
-        //     }
-        // }
+            if (evenPrevLastNumIndex > -1) {
+                storage.splice(evenPrevLastNumIndex, 1);
+            }
+        }
 
         if (prevLastNumIndex === undefined) {
             storage.push([0, i]);
         } else {
             storage.push([i - (prevLastNumIndex[1] + 1), i]);
+        }
+
+        if (i % 1000 === 0) {
+            console.log(i/1000 + '/' + 30000 + ' - ' + ((i / 30000000) * 100).toFixed(4) + '%');
         }
     }
 
